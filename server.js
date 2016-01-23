@@ -12,6 +12,9 @@ app.get('/', function(req, res) {
 
 app.use(express.static(__dirname + '/dist'));
 
-app.listen(server_port, server_ip_address, function() {
-    console.log("Server listening on http://" + server_ip_address + ":" + server_port + "...");
+console.log("Starting server on port " + server_port);
+console.log(process.env);
+
+app.listen(server_port, server_ip_address, function(){
+    console.log("Listening on " + server_ip_address + ", server_port " + server_port)
 });
