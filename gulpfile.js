@@ -62,7 +62,7 @@ gulp.task('images', function() {
 gulp.task('server', function () {
     nodemon({
         script: 'index.js',
-        ignore: 'dest/',
+        ignore: 'dist/',
     })
         .on('restart', function () {
             console.log('Node server restarted!')
