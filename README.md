@@ -1,8 +1,8 @@
 # Graph Algorithms
-Demonstration of graphs and graph algorhitms in CoffeeScript using JS framework jsnetworkx.
+Demonstration of graphs and graph algorithms in CoffeeScript using JS framework jsnetworkx.
 
 ## Usage
-Simply open `index.html` file in your favourite browser.
+Simply open `index.html` file in your favorite browser.
 
 ## Development
 If you want to contribute or use for your purposes, simply modify source files in `src`. Remember you have to download bower and npm packages with
