@@ -7,8 +7,8 @@ const imagemin = require('gulp-imagemin');
 const pngquant = require('imagemin-pngquant');
 
 const LIBS_PATH = [
-    // 'bower_components/jquery/dist/jquery.min.js',
-    // 'bower_components/bootstrap/dist/js/bootstrap.min.js',
+    'bower_components/jquery/dist/jquery.min.js',
+    'bower_components/bootstrap/dist/js/bootstrap.min.js',
     'bower_components/d3/d3.js',
     'bower_components/jsnetworkx/jsnetworkx.js'
 ];
