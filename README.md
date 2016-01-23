@@ -20,6 +20,8 @@ Then gulp will do the rest.
 gulp
 ```
 
+Server will now run on [http://localhost:8080]() with support of livereload.
+
 ## Troubleshooting
 When any error occurs, you can try to delete folders `dest`, `bower_components` and `node_modules` and run
 ```
