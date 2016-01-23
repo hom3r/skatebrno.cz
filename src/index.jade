@@ -4,7 +4,8 @@ html(lang="en-US")
         meta(charset="utf-8")
         meta(http-equiv="X-UA-Compatible", content="IE=edge,chrome=1")
         meta(name="description", content="Demonstration of graphs and graph algorithms in CoffeeScript using JS framework jsnetworkx.")
-        meta(name="viewport",content="width=device-width, initial-scale=1")
+        meta(name="viewport", content="width=device-width, initial-scale=1")
+        meta(name="author", content="David Beran")
         
         title Graph Algorithms
         
@@ -18,18 +19,70 @@ html(lang="en-US")
                 .col-xs-12
                     h1 Graph Algorithms
                     p Click any of blue buttons to generate graph.
-            
+                
+            .row
+                .col-xs-6.col-sm-4
+                    .panel.panel-default
+                        .panel-heading Searching
+                        .panel-body
+                            a#bfs.button.btn-warning BFS
+                            a#dfs.button.btn-warning DFS
+                            a#astar.button.btn-warning A*
+                            
+                .col-xs-6.col-sm-4
+                    .panel.panel-default
+                        .panel-heading Path finding
+                        .panel-body
+                            a#dijkstra.button.btn-warning Dijsktra
+                            a#bellman-ford.button.btn-warning Bellman-Ford
+                            a#floyd-warshall.button.btn-warning Floyd-Warshall
+                            
+                .col-xs-6.col-sm-4
+                    .panel.panel-default
+                        .panel-heading Minimum spanning tree
+                        .panel-body
+                            a#kruskal.button.btn-warning Kruskal
+                            a#jarnik.button.btn-warning Jarník (Prim)
+                            a#boruvka.button.btn-warning Borůvka
+                        
+                            
+                
             .row
                 .col-xs-12.col-sm-8
-                    div#canvas   
+                    div#canvas  
                     
-                .col-xs-6.col-sm-2
-                    each i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-                        a(id='k' + i).button= 'K' + i
-                        
-                .col-xs-6.col-sm-2
-                    each i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-                        a(id='c' + i).button= 'C' + i
+                .col-xs-6.col-sm-4
+                    .panel.panel-default
+                        .panel-heading Controls
+                        .panel-body
+                            a#prev.button.btn-success Previous step
+                            a#next.button.btn-success Next step
+                            a#restart.button.btn-danger Restart
+                            a#finish.button.btn-warning Finish
+                    
+            .row 
+                .col-xs-12
+                    h2 Generators
+                    
+            .row 
+                .col-xs-12
+                    .panel.panel-default
+                        .panel-heading Complete graphs
+                        .panel-body
+                            .row
+                                each i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                                    .col-xs-6.col-sm-2
+                                        a(id='k' + i).button.btn-primary= 'K' + i
+                                        
+            .row 
+                .col-xs-12
+                    .panel.panel-default
+                        .panel-heading Cyclic graphs
+                        .panel-body
+                            .row
+                                each i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                                    .col-xs-6.col-sm-2
+                                        a(id='c' + i).button.btn-primary= 'C' + i
             
             .row
                 .col-xs-12

@@ -32,11 +32,7 @@ cyclicG = (n) ->
 
 completeG(5)
 
-# for i in [1..8]
-#     # Complete graphs
-#     $('#k' + i).click ->
-#         completeG(i)
-#
+
 # Complete graphs
 $('#k1').click ->
     completeG(1)
