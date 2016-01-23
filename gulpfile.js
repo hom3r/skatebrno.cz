@@ -60,9 +60,12 @@ gulp.task('images', function() {
 });
 
 gulp.task('server', function () {
-  nodemon({ script: 'index.js' })
-    .on('restart', function () {
-      console.log('Node server restarted!')
+    nodemon({
+        script: 'index.js',
+        ignore: 'dest/',
+    })
+        .on('restart', function () {
+            console.log('Node server restarted!')
     })
 })
 
