@@ -1,2 +1,40 @@
-# graph-algorithms
-Demonstration of graphs and graph algorhitms in CoffeeScript
+# Graph Algorithms
+Demonstration of graphs and graph algorhitms in CoffeeScript using JS framework jsnetworkx.
+
+## Usage
+Simply open `index.html` file in your favourite browser.
+
+## Development
+If you want to contribute or use for your purposes, simply modify source files in `src`. Remember you have to download bower and npm packages with
+```
+npm install && bower update
+```
+
+If you don't have gulp installed locally, you have to install it first (you might need to run it with `sudo`)
+```
+npm install gulp -g
+```
+
+Then gulp will do the rest.
+```{bash}
+gulp
+```
+
+## Troubleshooting
+When any error occurs, you can try to delete folders `dest`, `bower_components` and `node_modules` and run
+```
+bower update && npm install
+```
+
+## Tools & langs
+* gulp
+* less
+* CoffeeScript
+* imagemin
+* d3.js
+* jsnetworkx
+
+
+## License
+
+The content of this project itself is licensed under the [Creative Commons Attribution 3.0 license](http://creativecommons.org/licenses/by/3.0/us/deed.en_US), and the underlying source code used to format and display that content is licensed under the [MIT license](http://opensource.org/licenses/mit-license.php).
