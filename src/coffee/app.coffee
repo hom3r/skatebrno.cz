@@ -30,6 +30,8 @@ cyclicG = (n) ->
     G = jsnx.cycleGraph n
     redraw()
 
+completeG(5)
+
 # for i in [1..8]
 #     # Complete graphs
 #     $('#k' + i).click ->

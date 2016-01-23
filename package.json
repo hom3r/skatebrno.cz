@@ -2,9 +2,10 @@
   "name": "graph-algorithms",
   "version": "1.0.0",
   "description": "Demonstration of graphs and graph algorhitms in CoffeeScript",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -27,7 +28,9 @@
   },
   "homepage": "https://github.com/hom3r/graph-algorithms#readme",
   "dependencies": {
-    "express": "^4.13.4",
+    "express": "^4.13.4"
+  },
+  "devDependencies": {
     "gulp": "^3.9.0",
     "gulp-coffee": "^2.3.1",
     "gulp-concat": "^2.6.0",

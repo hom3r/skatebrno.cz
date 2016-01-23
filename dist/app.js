@@ -36,6 +36,8 @@
     return redraw();
   };
 
+  completeG(5);
+
   $('#k1').click(function() {
     return completeG(1);
   });

@@ -69,7 +69,7 @@ gulp.task('jade', function() {
 
 gulp.task('server', function () {
     nodemon({
-        script: 'index.js',
+        script: 'server.js',
         ignore: PUBLIC_PATH,
     })
         .on('restart', function () {
