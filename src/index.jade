@@ -17,8 +17,19 @@ html(lang="en-US")
             .row
                 .col-xs-12
                     h1 Graph Algorithms
+                    p Click any of blue buttons to generate graph.
+            
+            .row
+                .col-xs-12.col-sm-8
+                    div#canvas   
                     
-                    div#canvas    
-                    
+                .col-xs-6.col-sm-2
+                    each i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                        a(id='k' + i).button= 'K' + i
+                        
+                .col-xs-6.col-sm-2
+                    each i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                        a(id='c' + i).button= 'C' + i
+            
                     
         script(src="app.js")

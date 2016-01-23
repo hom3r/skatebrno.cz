@@ -1,18 +1,84 @@
-g = new jsnx.Graph()
+G = jsnx.cycleGraph(6)
 
-k6 = jsnx.completeGraph(6)
-
-console.log "Hello world"
-
-console.log k6.nodes()
-
-for edge in k6.edges()
-    console.log edge
-
-
-jsnx.draw k6, {
+DRAW_SETTINGS = {
     element: '#canvas'
     edgeStyle: {
         'stroke-width': 10
     }
+    layoutAttr: {
+        linkDistance: 100
+    }
+    nodeAttr: {
+        r: 5
+    }
+    nodeStyle: {
+        stroke: 'none'
+    }
+    edgeStyle: {
+        fill: '#999'
+    }
 }
+
+redraw = () ->
+    jsnx.draw G, DRAW_SETTINGS, true
+
+completeG = (n) ->
+    G = jsnx.completeGraph n
+    redraw()
+
+cyclicG = (n) ->
+    G = jsnx.cycleGraph n
+    redraw()
+
+# for i in [1..8]
+#     # Complete graphs
+#     $('#k' + i).click ->
+#         completeG(i)
+#
+# Complete graphs
+$('#k1').click ->
+    completeG(1)
+$('#k2').click ->
+    completeG(2)
+$('#k3').click ->
+    completeG(3)
+$('#k4').click ->
+    completeG(4)
+$('#k5').click ->
+    completeG(5)
+$('#k6').click ->
+    completeG(6)
+$('#k7').click ->
+    completeG(7)
+$('#k8').click ->
+    completeG(8)
+$('#k9').click ->
+    completeG(9)
+$('#k10').click ->
+    completeG(10)
+
+# Cyclic graphs
+$('#c1').click ->
+    cyclicG(1)
+$('#c2').click ->
+    cyclicG(2)
+$('#c3').click ->
+    cyclicG(3)
+$('#c4').click ->
+    cyclicG(4)
+$('#c5').click ->
+    cyclicG(5)
+$('#c6').click ->
+    cyclicG(6)
+$('#c7').click ->
+    cyclicG(7)
+$('#c8').click ->
+    cyclicG(8)
+$('#c9').click ->
+    cyclicG(9)
+$('#c10').click ->
+    cyclicG(10)
+
+
+$('.button').click (e) ->
+    e.preventDefault()
