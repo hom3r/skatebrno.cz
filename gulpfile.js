@@ -7,6 +7,7 @@ const imagemin = require('gulp-imagemin');
 const pngquant = require('imagemin-pngquant');
 const livereload = require('gulp-livereload');
 const nodemon = require('gulp-nodemon');
+const jade = require('gulp-jade');
 
 const LIBS_PATH = [
     'bower_components/jquery/dist/jquery.min.js',
@@ -16,10 +17,11 @@ const LIBS_PATH = [
 ];
 const LESS_PATH    = 'src/less/*.less';
 const SCRIPTS_PATH = 'src/coffee/*.coffee';
-const PUBLIC_PATH = './dest';
-const IMAGES_PATH = './dest/img';
+const PUBLIC_PATH = './dist';
+const IMAGES_PATH = './dist/img';
 
 const SRC_IMAGES = 'src/images/*';
+const SRC_JADE = 'src/index.jade';
 const MAIN_LESS = 'src/less/app.less';
 const MAIN_COFFEE = 'src/coffee/app.coffee';
 
@@ -58,11 +60,17 @@ gulp.task('images', function() {
 		.pipe(gulp.dest(IMAGES_PATH))
         .pipe(livereload());
 });
+gulp.task('jade', function() {
+  gulp.src(SRC_JADE)
+    .pipe(jade())
+    .pipe(gulp.dest(PUBLIC_PATH))
+    .pipe(livereload());
+});
 
 gulp.task('server', function () {
     nodemon({
         script: 'index.js',
-        ignore: 'dist/',
+        ignore: PUBLIC_PATH,
     })
         .on('restart', function () {
             console.log('Node server restarted!')
@@ -74,6 +82,7 @@ gulp.task('watch', function() {
     gulp.watch(SCRIPTS_PATH, ['scripts']);
     gulp.watch(LESS_PATH, ['less']);
     gulp.watch(SRC_IMAGES, ['images']);
+    gulp.watch(SRC_JADE, ['jade']);
 });
 
-gulp.task('default', ['images', 'libs', 'scripts', 'less', 'server', 'watch']);
+gulp.task('default', ['images', 'libs', 'scripts', 'less', 'jade', 'server', 'watch']);
