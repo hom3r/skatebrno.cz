@@ -8,6 +8,8 @@ const pngquant = require('imagemin-pngquant');
 const livereload = require('gulp-livereload');
 const nodemon = require('gulp-nodemon');
 const jade = require('gulp-jade');
+const cssnano = require('gulp-cssnano');
+const uglify = require('gulp-uglify');
 
 const LIBS_PATH = [
     'bower_components/jquery/dist/jquery.min.js',
@@ -36,8 +38,11 @@ gulp.task('libs', function() {
 });
 gulp.task('scripts', function() {
     return gulp.src(MAIN_COFFEE)
+        .pipe(sourcemaps.init())
         .pipe(coffee())
         .pipe(concat(DEST_SCRIPT))
+        .pipe(uglify())
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest(PUBLIC_PATH))
         .pipe(livereload());
 });
@@ -46,6 +51,7 @@ gulp.task('less', function() {
     return gulp.src(MAIN_LESS)
         .pipe(sourcemaps.init())
         .pipe(less())
+        .pipe(cssnano())
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(PUBLIC_PATH))
         .pipe(livereload());
