@@ -78,6 +78,14 @@
     return completeG(10);
   });
 
+  $('#k11').click(function() {
+    return completeG(11);
+  });
+
+  $('#k12').click(function() {
+    return completeG(12);
+  });
+
   $('#c1').click(function() {
     return cyclicG(1);
   });
@@ -116,6 +124,14 @@
 
   $('#c10').click(function() {
     return cyclicG(10);
+  });
+
+  $('#c11').click(function() {
+    return cyclicG(11);
+  });
+
+  $('#c12').click(function() {
+    return cyclicG(12);
   });
 
   $('.button').click(function(e) {

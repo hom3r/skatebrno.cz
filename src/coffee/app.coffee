@@ -54,6 +54,10 @@ $('#k9').click ->
     completeG(9)
 $('#k10').click ->
     completeG(10)
+$('#k11').click ->
+    completeG(11)
+$('#k12').click ->
+    completeG(12)
 
 # Cyclic graphs
 $('#c1').click ->
@@ -76,6 +80,10 @@ $('#c9').click ->
     cyclicG(9)
 $('#c10').click ->
     cyclicG(10)
+$('#c11').click ->
+    cyclicG(11)
+$('#c12').click ->
+    cyclicG(12)
 
 
 $('.button').click (e) ->
