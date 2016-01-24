@@ -1,5 +1,11 @@
 # Graph Algorithms
+
+[![Build Status](https://travis-ci.org/hom3r/letni-kina.svg?branch=master)](https://travis-ci.org/hom3r/letni-kina)
+[![Dependencies status](https://david-dm.org/hom3r/letni-kina.svg)](https://david-dm.org/hom3r/letni-kina)
+
+
 Demonstration of graphs and graph algorithms in CoffeeScript using JS framework jsnetworkx.
+
 
 ## Usage
 Simply open `dist/index.html` file in your favorite browser.
