@@ -12,6 +12,7 @@ const cssnano = require('gulp-cssnano');
 const uglify = require('gulp-uglify');
 const sequence = require('run-sequence');
 const del = require('del');
+const mocha = require('gulp-mocha');
 
 const LIBS_PATH = [
     'bower_components/jquery/dist/jquery.min.js',
@@ -41,7 +42,8 @@ gulp.task('libs', function() {
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(PUBLIC_PATH));
 });
-gulp.task('scripts', function() {
+
+gulp.task('coffee', function() {
     return gulp.src(MAIN_COFFEE)
         .pipe(sourcemaps.init())
         .pipe(coffee())
@@ -50,6 +52,13 @@ gulp.task('scripts', function() {
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(PUBLIC_PATH))
         .pipe(livereload());
+});
+
+gulp.task('coffee-test', function() {
+    return gulp.src('test/coffee/*')
+        .pipe(coffee())
+        .pipe(gulp.dest('test/'));
+        // .pipe(livereload());
 });
 
 gulp.task('less', function() {
@@ -96,16 +105,24 @@ gulp.task('clean', function () {
 
 gulp.task('watch', function() {
     livereload.listen();
-    gulp.watch(SCRIPTS_PATH, ['scripts']);
+    gulp.watch(SCRIPTS_PATH, ['coffee']);
     gulp.watch(LESS_PATH, ['less']);
     gulp.watch(SRC_IMAGES, ['images']);
     gulp.watch(SRC_JADE, ['jade']);
 });
 
+gulp.task('test', ['coffee-test'], function() {
+    return gulp.src('test/*.js', {read: false})
+        // gulp-mocha needs filepaths so you can't have any plugins before it
+        .pipe(mocha(
+            {reporter: 'nyan'}
+        ));
+});
+
 gulp.task('default', function(callback) {
     sequence(
         'clean',
-        ['images', 'scripts', 'less', 'jade', 'libs'],
+        ['images', 'coffee', 'less', 'jade', 'libs'],
         ['server', 'watch'],
         callback
     );
