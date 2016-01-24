@@ -10,6 +10,8 @@ const nodemon = require('gulp-nodemon');
 const jade = require('gulp-jade');
 const cssnano = require('gulp-cssnano');
 const uglify = require('gulp-uglify');
+const sequence = require('run-sequence');
+const del = require('del');
 
 const LIBS_PATH = [
     'bower_components/jquery/dist/jquery.min.js',
@@ -33,8 +35,10 @@ const DEST_LIBS = 'libs.min.js';
 
 gulp.task('libs', function() {
     return gulp.src(LIBS_PATH)
+        .pipe(sourcemaps.init())
         .pipe(concat(DEST_LIBS))
-        .pipe(uglify())
+        // .pipe(uglify())
+        .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(PUBLIC_PATH));
 });
 gulp.task('scripts', function() {
@@ -43,7 +47,7 @@ gulp.task('scripts', function() {
         .pipe(coffee())
         .pipe(concat(DEST_SCRIPT))
         .pipe(uglify())
-        .pipe(sourcemaps.write())
+        .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(PUBLIC_PATH))
         .pipe(livereload());
 });
@@ -53,7 +57,7 @@ gulp.task('less', function() {
         .pipe(sourcemaps.init())
         .pipe(less())
         .pipe(cssnano())
-        .pipe(sourcemaps.write())
+        .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(PUBLIC_PATH))
         .pipe(livereload());
 });
@@ -82,7 +86,13 @@ gulp.task('server', function () {
         .on('restart', function () {
             console.log('Node server restarted!')
     })
-})
+});
+
+gulp.task('clean', function () {
+  return del([
+    'dist/'
+  ]);
+});
 
 gulp.task('watch', function() {
     livereload.listen();
@@ -92,4 +102,11 @@ gulp.task('watch', function() {
     gulp.watch(SRC_JADE, ['jade']);
 });
 
-gulp.task('default', ['images', 'libs', 'scripts', 'less', 'jade', 'server', 'watch']);
+gulp.task('default', function(callback) {
+    sequence(
+        'clean',
+        ['images', 'scripts', 'less', 'jade', 'libs'],
+        ['server', 'watch'],
+        callback
+    );
+});
