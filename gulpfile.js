@@ -34,6 +34,7 @@ const DEST_LIBS = 'libs.min.js';
 gulp.task('libs', function() {
     return gulp.src(LIBS_PATH)
         .pipe(concat(DEST_LIBS))
+        .pipe(uglify())
         .pipe(gulp.dest(PUBLIC_PATH));
 });
 gulp.task('scripts', function() {
