@@ -1,0 +1,34 @@
+{
+  "name": "graph-algorithms",
+  "description": "Demonstration of graphs and graph algorhitms in CoffeeScript",
+  "main": "server.js",
+  "authors": [
+    "David Beran"
+  ],
+  "license": "GPL-3.0",
+  "keywords": [
+    "graph",
+    "theory",
+    "graph",
+    "visualisation",
+    "bfs",
+    "dfs",
+    "bellman-ford",
+    "dijkstra"
+  ],
+  "homepage": "http://grafy.david-beran.cz",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "d3": "~3.5.13",
+    "bootstrap": "~3.3.6",
+    "jsnetworkx": "~0.3.4"
+  }
+}
