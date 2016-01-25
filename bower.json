@@ -1,22 +1,22 @@
 {
-  "name": "graph-algorithms",
-  "description": "Demonstration of graphs and graph algorhitms in CoffeeScript",
+  "name": "front-boilerplate",
+  "description": "My custom boilerplate for fast creating front-end applications",
   "main": "server.js",
   "authors": [
     "David Beran"
   ],
   "license": "GPL-3.0",
   "keywords": [
-    "graph",
-    "theory",
-    "graph",
-    "visualisation",
-    "bfs",
-    "dfs",
-    "bellman-ford",
-    "dijkstra"
+    "jade",
+    "coffeescript",
+    "anglar",
+    "bootstrap",
+    "jquery",
+    "less",
+    "gulp",
+    "nodejs"
   ],
-  "homepage": "http://grafy.david-beran.cz",
+  "homepage": "http://front.david-beran.cz",
   "moduleType": [],
   "private": true,
   "ignore": [
@@ -27,8 +27,6 @@
     "tests"
   ],
   "dependencies": {
-    "d3": "~3.5.13",
-    "bootstrap": "~3.3.6",
-    "jsnetworkx": "~0.3.4"
+    "bootstrap": "~3.3.6"
   }
 }

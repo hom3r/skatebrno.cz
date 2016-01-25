@@ -1,7 +1,7 @@
 {
-  "name": "graph-algorithms",
+  "name": "front-boilerplate",
   "version": "1.0.0",
-  "description": "Demonstration of graphs and graph algorhitms in CoffeeScript",
+  "description": "My custom boilerplate for fast creating front-end applications",
   "main": "server.js",
   "scripts": {
     "test": "gulp test",
@@ -9,24 +9,24 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hom3r/graph-algorithms.git"
+    "url": "git+https://github.com/hom3r/front-boilerplate.git"
   },
   "keywords": [
-    "graph",
-    "theory",
-    "graph",
-    "visualisation",
-    "bfs",
-    "dfs",
-    "bellman-ford",
-    "dijkstra"
+    "jade",
+    "coffeescript",
+    "anglar",
+    "bootstrap",
+    "jquery",
+    "less",
+    "gulp",
+    "nodejs"
   ],
   "author": "David Beran",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/hom3r/graph-algorithms/issues"
+    "url": "https://github.com/hom3r/front-boilerplate/issues"
   },
-  "homepage": "https://github.com/hom3r/graph-algorithms#readme",
+  "homepage": "https://github.com/hom3r/front-boilerplate#readme",
   "dependencies": {
     "express": "^4.13.4"
   },

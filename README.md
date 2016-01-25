@@ -1,10 +1,10 @@
-# Graph Algorithms
+# Front-End Boilerplate
 
-[![Build Status](https://travis-ci.org/hom3r/letni-kina.svg?branch=master)](https://travis-ci.org/hom3r/letni-kina)
-[![Dependencies status](https://david-dm.org/hom3r/letni-kina.svg)](https://david-dm.org/hom3r/letni-kina)
+[![Build Status](https://travis-ci.org/hom3r/front-boilerplate.svg?branch=master)](https://travis-ci.org/hom3r/front-boilerplate)
+[![Dependencies status](https://david-dm.org/hom3r/front-boilerplate.svg)](https://david-dm.org/hom3r/front-boilerplate)
 
 
-Demonstration of graphs and graph algorithms in CoffeeScript using JS framework jsnetworkx.
+My custom boilerplate for fast creating front-end applications.
 
 
 ## Usage
@@ -36,12 +36,13 @@ bower update && npm install
 
 ## Tools & langs
 * gulp
-* less
+* bower
+* Bootstrap
+* jQuery
+* LESS
 * jade
 * CoffeeScript
 * imagemin
-* d3.js
-* jsnetworkx
 
 
 ## License

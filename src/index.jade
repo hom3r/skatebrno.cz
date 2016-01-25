@@ -21,73 +21,53 @@ html(lang="en-US")
         .container
             .row
                 .col-xs-12
-                    h1 Graph Algorithms
-                    p Click any of blue buttons to generate graph.
+                    h1 front-boilerplate
+                    p My custom boilerplate for fast creating front-end applications
                 
             .row
                 .col-xs-6.col-sm-4
                     .panel.panel-default
-                        .panel-heading Searching
+                        .panel-heading 
+                            .panel-title Technologies
                         .panel-body
-                            a#bfs.button.btn-warning BFS
-                            a#dfs.button.btn-warning DFS
-                            a#astar.button.btn-warning A*
-                            
+                            ul
+                                li gulp
+                                li jade
+                                li LESS
+                                li node.js
+                                li mocha &amp; chai
+                                
+                                
                 .col-xs-6.col-sm-4
                     .panel.panel-default
-                        .panel-heading Path finding
+                        .panel-heading 
+                            .panel-title Frameworks
                         .panel-body
-                            a#dijkstra.button.btn-warning Dijsktra
-                            a#bellman-ford.button.btn-warning Bellman-Ford
-                            a#floyd-warshall.button.btn-warning Floyd-Warshall
+                            p Some example frameworks you can use
+                                ul
+                                    li AngularJS
+                                    li ReactJS
+                                    li Backbone
+                                    li jQuery (already included)
+                                    li Bootstrap (already included)
+                                    
+                .col-xs-12.col-sm-4
+                    .panel.panel-default
+                        .panel-heading 
+                            .panel-title Bower
+                        .panel-body
+                            p 
+                                | Use your imagination and use any of modern frameworks. Simple download any with
+                                pre bower install &lt;package-name&gt; --save
+                                | include JS files in 
+                                code gulpfile.js 
+                                | to
+                                code LIBS_PATH
+                                | and CSS/LESS files in 
+                                code src/coffee/app.coffee
+                                    
+                                
                             
-                .col-xs-6.col-sm-4
-                    .panel.panel-default
-                        .panel-heading Minimum spanning tree
-                        .panel-body
-                            a#kruskal.button.btn-warning Kruskal
-                            a#jarnik.button.btn-warning Jarník (Prim)
-                            a#boruvka.button.btn-warning Borůvka
-                        
-                            
-                
-            .row
-                .col-xs-12.col-sm-8
-                    div#canvas  
-                    
-                .col-xs-6.col-sm-4
-                    .panel.panel-default
-                        .panel-heading Controls
-                        .panel-body
-                            a#prev.button.btn-success Previous step
-                            a#next.button.btn-success Next step
-                            a#restart.button.btn-danger Restart
-                            a#finish.button.btn-warning Finish
-                    
-            .row 
-                .col-xs-12
-                    h2 Generators
-                    
-            .row 
-                .col-xs-12
-                    .panel.panel-default
-                        .panel-heading Complete graphs
-                        .panel-body
-                            .row
-                                each i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-                                    .col-xs-6.col-sm-2
-                                        a(id='k' + i).button.btn-primary= 'K' + i
-                                        
-            .row 
-                .col-xs-12
-                    .panel.panel-default
-                        .panel-heading Cyclic graphs
-                        .panel-body
-                            .row
-                                each i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-                                    .col-xs-6.col-sm-2
-                                        a(id='c' + i).button.btn-primary= 'C' + i
-            
             .row
                 .col-xs-12
                     footer 
