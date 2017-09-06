@@ -20,41 +20,103 @@ html(lang="en-US")
         script(src="libs.min.js")    
         //- script(src="app.js")
         script.
+            function createInfowindow(name, street, city) {
+                return new google.maps.InfoWindow({
+                    content: '<div class="bubble"><strong>' + name + '</strong><div class="info">' + street + '<br>' + city + '</div></div>'
+                });
+            }
+            
             function initMap() {
+                var markers = [
+                    {
+                        title: 'Obřany - rampa',
+                        street: 'Černovická 568/11',
+                        city: '617 00 Brno-jih-Komárov',
+                        position: {lat: 49.226088, lng: 16.661595}
+                    },
+                    {
+                        title: 'Skatepark Juliánov',
+                        street: 'Líšeňská 4223/46',
+                        city: '636 00 Brno-Židenice',
+                        position: {lat:49.196835, lng:16.656936}
+                    },
+                    {
+                        title: 'Skatepark Slatina',
+                        street: 'Rousínovská 1028/2',
+                        city: '627 00 Brno-Slatina',
+                        position: {lat:49.181990, lng:16.684940}
+                    },
+                    {
+                        title: 'Skatepark Komárov',
+                        street: 'Hněvkovského 71/62',
+                        city: '617 00 Brno-jih',
+                        position: {lat:49.169596, lng:16.624226}
+                    },
+                    {
+                        title: 'Starý skatepark Komárov',
+                        street: 'Černovická 568/11',
+                        city: '617 00 Brno-jih-Komárov',
+                        position: {lat:49.178233, lng:16.628310}
+                    },
+                    //- {
+                    //-     title: '',
+                    //-     street: '',
+                    //-     city: '',
+                    //-     position: 
+                    //- },
+                ];
                 var brno_stred = {lat:49.194749, lng:16.609508}
-                var funpark = {lat:49.196835, lng:16.656936}
-                var slatina = {lat:49.181990, lng:16.684940}
-                var komec = {lat:49.169596, lng:16.624226}
-                var stary_komec = {lat:49.178233, lng:16.628310}
-                var u_obrany = {lat: 49.226088, lng: 16.661595}
+                
                 var map = new google.maps.Map(document.getElementById('map'), {
                   zoom: 12,
                   center: brno_stred
                 });
-                //- var marker = new google.maps.Marker({
-                //-   position: uluru,
+                
+                var infowindow = null;
+                markers.forEach(function(element) {
+                    var marker = new google.maps.Marker({
+                      position: element.position,
+                      map: map,
+                      title: element.title
+                    });
+                    google.maps.event.addListener(marker, 'click', function() {
+                        if (infowindow) {
+                            infowindow.close();
+                        }
+                        infowindow = createInfowindow(element.title, element.street, element.city);
+                        infowindow.open(map, marker);
+                    });
+                });
+                
+                //- var obrany_marker = new google.maps.Marker({
+                //-   position: u_obrany,
+                //-   map: map,
+                //-   title: 'Obřany - rampa'
+                //- });
+                //- google.maps.event.addListener(obrany_marker, 'click', function() {
+                //-     var infowindow = createInfowindow('Obřany - rampa', 'Černovická 568/11', '617 00 Brno-jih-Komárov');
+                //-     infowindow.open(map, obrany_marker);
+                //- });
+                //- 
+                //- var funpark_marker = new google.maps.Marker({
+                //-   position: funpark,
+                //-   map: map,
+                //-   title: 'Bohunický funpark'
+                //- });
+                //- var slatina_marker = new google.maps.Marker({
+                //-   position: slatina,
                 //-   map: map
                 //- });
-                var obrany_marker = new google.maps.Marker({
-                  position: u_obrany,
-                  map: map
-                });
-                var funpark_marker = new google.maps.Marker({
-                  position: funpark,
-                  map: map
-                });
-                var slatina_marker = new google.maps.Marker({
-                  position: slatina,
-                  map: map
-                });
-                var komec_marker = new google.maps.Marker({
-                  position: komec,
-                  map: map
-                });
-                var stary_komec_marker = new google.maps.Marker({
-                  position: stary_komec,
-                  map: map
-                });
+                //- var komec_marker = new google.maps.Marker({
+                //-   position: komec,
+                //-   map: map,
+                //-   title: 'Skatepark Komárov'
+                //- });
+                //- var stary_komec_marker = new google.maps.Marker({
+                //-   position: stary_komec,
+                //-   map: map,
+                //-   title: 'Starý skatepark Komárov'
+                //- });
             }
           
         script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANV_0qDd7P-XR7FASV0Y4_BdN6hyt24S8&callback=initMap" async defer)

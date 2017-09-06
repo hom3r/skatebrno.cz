@@ -7,7 +7,8 @@ html, body {
 }
 
 body {
-    background: url('img/grey.png');
+    // background: url('img/grey.png');
+    overflow: hidden;
 }
 
 footer {
@@ -27,6 +28,8 @@ header {
     position: absolute;
     top: 0;
     z-index: 100;
+    box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.4);
+    border-bottom: 1px solid #DDD;
 }
 
 h1 {
@@ -37,4 +40,18 @@ h1 {
 
 h2 {
     text-align: center;
+}
+
+
+.bubble {
+    text-align: center;
+    color: #333;
+    padding: 10px 0 10px 20px;
+
+    strong {
+        font-size: 1.6rem;
+    }
+    .info {
+        margin-top: 0.5em;
+    }
 }
