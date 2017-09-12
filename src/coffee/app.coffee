@@ -8,6 +8,10 @@ initMap = () ->
           center: {lat: -34.397, lng: 150.644},
           zoom: 8
     })
-    console.log "Map function triggered"
 
-console.log "Map function loaded"
+    console.log "Map function loaded"
+
+
+console.log "Everything is loaded!"
+
+exports initMap

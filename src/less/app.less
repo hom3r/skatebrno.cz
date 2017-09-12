@@ -1,4 +1,8 @@
-@import "../../bower_components/bootstrap/less/bootstrap.less";
+// @import "../../bower_components/bootstrap/less/bootstrap.less";
+
+
+@header-height: 50px;
+@sidepanel-width: 200px;
 
 html, body {
     height: 100%;
@@ -11,6 +15,11 @@ body {
     // overflow: hidden;
 }
 
+
+// #logo {
+//     max-width: 20px;
+// }
+
 footer {
     margin: 0.5em 0;
     text-align: center;
@@ -19,6 +28,34 @@ footer {
 
 #map {
     height: 100vh;
+}
+
+#sidepanel {
+    position: absolute;
+    top: @header-height;
+    left: -(@sidepanel-width + 20px);
+    bottom: 0;
+    width: @sidepanel-width;
+    background-color: #FFF;
+    box-shadow: 10px 0px 20px 0px rgba(0,0,0,0.2);
+
+    transition: left ease-in-out 0.3s;
+
+    &.onscreen {
+        left: 0;
+    }
+
+    #filter {
+        img {
+            width: 24px;
+            margin-left: 5px;
+        }
+    }
+
+    #hide-filter {
+        margin-top: 15px;
+        font-size: 2em;
+    }
 }
 
 header {
@@ -53,5 +90,30 @@ h2 {
     }
     .info {
         margin-top: 0.5em;
+    }
+}
+
+// bootstrap changes
+nav.navbar {
+    margin-bottom: 0;
+    border-width: 0;
+}
+.navbar-header {
+    font-weight: bold;
+}
+.navbar-default .navbar-brand {
+    color: #111;
+
+    &:focus,
+    &:hover {
+        color: #333;
+    }
+}
+.navbar-default .navbar-nav>li>a {
+    color: #111;
+
+    &:focus,
+    &:hover {
+        color: #333;
     }
 }

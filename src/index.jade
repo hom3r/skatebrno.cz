@@ -3,120 +3,87 @@ html(lang="en-US")
     head
         meta(charset="utf-8")
         meta(http-equiv="X-UA-Compatible", content="IE=edge,chrome=1")
-        meta(name="description", content="Demonstration of graphs and graph algorithms in CoffeeScript using JS framework jsnetworkx.")
+        meta(name="description", content="Interaktivní mapa skateboardingu v Brně. Najdi skejtový spoty v Brně a okolí.")
         meta(name="viewport", content="width=device-width, initial-scale=1")
         meta(name="author", content="David Beran")
         
-        title Skate Brno! Sweet skate spots in Brno city.
+        title Skate Brno!
         
+        link(rel="stylesheet", href="libs.min.css")
         link(rel="stylesheet", href="app.css")
         
     body
         header
-            h1.header Skate Brno!
-            //- h2.header Find sweet skate spots in Brno
+            nav.navbar.navbar-default
+                div.container-fluid
+                    div.navbar-header
+                        button.navbar-toggle.collapsed(type="button", data-toggle="collapse", data-target="#navigation", aria-expanded="false")
+                            span.sr-only Přepnout navigaci
+                            span.icon-bar
+                            span.icon-bar
+                            span.icon-bar
+                        a(href="#").navbar-brand Skate Brno!
+                    
+                    div#navigation.collapse.navbar-collapse.navbar-right
+                        ul.nav.navbar-nav(role="navigation")
+                            li
+                                a#toggle-sidepanel(href="#") Filtr
+                            //- li
+                            //-     a#add-marker(href="#") Přidej
+                            li
+                                a(href="#", type="button", data-toggle="modal", data-target="#modal-about") O aplikaci
         div#map
+        div#sidepanel
+            .container-fluid
+                button#hide-filter.close(aria-label="Zavřít")
+                    span(aria-hidden="True") &times;
+                h2.heading Filtr
+                form#filter
+                    div.form-check
+                        label
+                            input#parks-checkbox.form-check-input(type="checkbox", value="park", checked="checked")
+                            img(src="http://maps.google.com/mapfiles/ms/icons/red-dot.png", alt="")
+                            | skateparky
+                    div.form-check
+                        label
+                            input#spots-checkbox.form-check-input(type="checkbox", value="spot", checked="checked")
+                            img(src="http://maps.google.com/mapfiles/ms/icons/purple-dot.png", alt="")
+                            | spoty
+                    div.form-check
+                        label
+                            input#ramps-checkbox.form-check-input(type="checkbox", value="ramp", checked="checked")
+                            img(src="http://maps.google.com/mapfiles/ms/icons/yellow-dot.png", alt="")
+                            | rampy
+                    div.form-check
+                        label
+                            input#shops-checkbox.form-check-input(type="checkbox", value="shop")
+                            img(src="http://maps.google.com/mapfiles/ms/icons/green-dot.png", alt="")
+                            | obchody
+                            
+                //- p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat minima dignissimos voluptatem distinctio obcaecati. Nemo dolore doloremque odio numquam est, laborum deserunt veniam harum quidem totam deleniti veritatis. Ab, soluta.
             
+        div#modal-about.modal.fade(tabindex="-1", role="dialog")
+            div.modal-dialog(role="document")
+                div.modal-content
+                    .modal-header
+                        button.close(data-dismiss="modal", aria-label="Zavřít")
+                            span(aria-hidden="True") &times;
+                        h4.modal-title O aplikaci
+                    .modal-body
+                        p 
+                            strong Skate Brno! 
+                            | je webová aplikace mapující skateparky a spoty v Brně a blízkém okolí. Pro některé skejťáky (především pro ty začínající) 
+                            | není snadné najít vhodné místo, kam chodit skejtovat. Za pomoci této stránky je snadné najít vyhovující park nebo spot,
+                            | o kterém jste třeba ani nevěděli. Nebo o něm třeba někdy zaslechli, ale nevěděli kde přesně ho hledat.
+                        p Tvůrcem  
+                            strong Skate Brno! 
+                            | je 
+                            a(href="http://david-beran.cz") David Beran
+                            |, funguje ale především díky komunitě skejťáků, které patří velký dík! Enjoy!
+                    .modal-footer
+                        button.btn.btn-default(type="button", data-dismiss="modal") Zavřít
+                                    
         script(src="libs.min.js")    
-        //- script(src="app.js")
-        script.
-            function createInfowindow(name, street, city) {
-                return new google.maps.InfoWindow({
-                    content: '<div class="bubble"><strong>' + name + '</strong><div class="info">' + street + '<br>' + city + '</div></div>'
-                });
-            }
-            
-            function initMap() {
-                var markers = [
-                    {
-                        title: 'Obřany - rampa',
-                        street: 'Černovická 568/11',
-                        city: '617 00 Brno-jih-Komárov',
-                        position: {lat: 49.226088, lng: 16.661595}
-                    },
-                    {
-                        title: 'Skatepark Juliánov',
-                        street: 'Líšeňská 4223/46',
-                        city: '636 00 Brno-Židenice',
-                        position: {lat:49.196835, lng:16.656936}
-                    },
-                    {
-                        title: 'Skatepark Slatina',
-                        street: 'Rousínovská 1028/2',
-                        city: '627 00 Brno-Slatina',
-                        position: {lat:49.181990, lng:16.684940}
-                    },
-                    {
-                        title: 'Skatepark Komárov',
-                        street: 'Hněvkovského 71/62',
-                        city: '617 00 Brno-jih',
-                        position: {lat:49.169596, lng:16.624226}
-                    },
-                    {
-                        title: 'Starý skatepark Komárov',
-                        street: 'Černovická 568/11',
-                        city: '617 00 Brno-jih-Komárov',
-                        position: {lat:49.178233, lng:16.628310}
-                    },
-                    //- {
-                    //-     title: '',
-                    //-     street: '',
-                    //-     city: '',
-                    //-     position: 
-                    //- },
-                ];
-                var brno_stred = {lat:49.194749, lng:16.609508}
-                
-                var map = new google.maps.Map(document.getElementById('map'), {
-                  zoom: 12,
-                  center: brno_stred
-                });
-                
-                var infowindow = null;
-                markers.forEach(function(element) {
-                    var marker = new google.maps.Marker({
-                      position: element.position,
-                      map: map,
-                      title: element.title
-                    });
-                    google.maps.event.addListener(marker, 'click', function() {
-                        if (infowindow) {
-                            infowindow.close();
-                        }
-                        infowindow = createInfowindow(element.title, element.street, element.city);
-                        infowindow.open(map, marker);
-                    });
-                });
-                
-                //- var obrany_marker = new google.maps.Marker({
-                //-   position: u_obrany,
-                //-   map: map,
-                //-   title: 'Obřany - rampa'
-                //- });
-                //- google.maps.event.addListener(obrany_marker, 'click', function() {
-                //-     var infowindow = createInfowindow('Obřany - rampa', 'Černovická 568/11', '617 00 Brno-jih-Komárov');
-                //-     infowindow.open(map, obrany_marker);
-                //- });
-                //- 
-                //- var funpark_marker = new google.maps.Marker({
-                //-   position: funpark,
-                //-   map: map,
-                //-   title: 'Bohunický funpark'
-                //- });
-                //- var slatina_marker = new google.maps.Marker({
-                //-   position: slatina,
-                //-   map: map
-                //- });
-                //- var komec_marker = new google.maps.Marker({
-                //-   position: komec,
-                //-   map: map,
-                //-   title: 'Skatepark Komárov'
-                //- });
-                //- var stary_komec_marker = new google.maps.Marker({
-                //-   position: stary_komec,
-                //-   map: map,
-                //-   title: 'Starý skatepark Komárov'
-                //- });
-            }
+        script(src="app.min.js")
           
         script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANV_0qDd7P-XR7FASV0Y4_BdN6hyt24S8&callback=initMap" async defer)
