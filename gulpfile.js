@@ -24,8 +24,10 @@ const LESS_LIBS_PATH = [
 const LESS_PATH    = 'src/less/*.less';
 const JS_PATH    = 'src/js/*.js';
 const SCRIPTS_PATH = 'src/coffee/*.coffee';
+const FONTS_PATH = 'bower_components/bootstrap/fonts/*';
 const PUBLIC_PATH = './dist';
 const IMAGES_PATH = './dist/img';
+const FONTS_DEST = './dist/fonts';
 
 const SRC_IMAGES = 'src/images/*';
 const SRC_JADE = 'src/index.jade';
@@ -116,6 +118,11 @@ gulp.task('jade', function() {
     .pipe(gulp.dest(PUBLIC_PATH))
     .pipe(livereload());
 });
+gulp.task('fonts', function() {
+  gulp.src(FONTS_PATH)
+    .on('error', onError)
+    .pipe(gulp.dest(FONTS_DEST));
+});
 
 gulp.task('server', function () {
     nodemon({
@@ -152,7 +159,7 @@ gulp.task('test', ['coffee-test'], function() {
 gulp.task('default', function(callback) {
     sequence(
         'clean',
-        ['images', 'js', 'less', 'jade', 'libs', 'less-libs'],
+        ['images', 'js', 'less', 'jade', 'libs', 'less-libs', 'fonts'],
         ['server', 'watch'],
         callback
     );
